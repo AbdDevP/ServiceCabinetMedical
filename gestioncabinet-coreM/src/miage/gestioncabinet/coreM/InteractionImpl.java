@@ -3,66 +3,63 @@ package miage.gestioncabinet.coreM;
 import miage.gestioncabinet.api.Interaction;
 import miage.gestioncabinet.api.Produit;
 
-public class InteractionImpl implements Interaction{
+public class InteractionImpl implements Interaction {
 
-	Produit produitA;
-	Produit produitB;
-	String severite;
-	String risques;
-	String precautions;
-	
 	private static final long serialVersionUID = 1L;
-
-	@Override
+	Produit prod1;
+	Produit prod2;
+	String sev;
+	String risq;
+	String prec;
+	
+	
 	public Produit getProduitA() {
-		return this.produitA;
+		return prod1;
 	}
 
-	@Override
+
 	public void setProduitA(Produit produit) {
-		this.produitA = produit;
+		this.prod1 = produit;
 	}
 
-	@Override
+
 	public Produit getProduitB() {
-		return produitB;
+		return prod2;
 	}
 
-	@Override
+
 	public void setProduitB(Produit produit) {
-		produitB = produit;
+		this.prod2 = produit;
 	}
 
-	@Override
+
 	public String getSeverite() {
-		return this.severite;
+		return sev;
 	}
 
-	@Override
+
 	public void setSeverite(String severite) {
-		this.severite = severite;	
+		this.sev = severite;
 	}
 
-	@Override
+
 	public String getRisques() {
-		return this.risques;
+		return risq;
 	}
 
-	@Override
+
 	public void setRisques(String risques) {
-		this.risques = risques;
-		
+		this.risq = risques;
 	}
 
-	@Override
+
 	public String getPrecautions() {
-		return this.precautions;
+		return prec;
 	}
 
-	@Override
+
 	public void setPrecautions(String precautions) {
-		this.precautions = precautions;
-		
+		this.prec = precautions;
 	}
 
 }
