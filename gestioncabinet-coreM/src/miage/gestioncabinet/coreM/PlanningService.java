@@ -74,7 +74,9 @@ public class PlanningService implements PlanningRemoteService {
 	@Override
 	public Medecin getMedecin() {
 		if (this.medecin == null) {
+			System.out.println(PlanningService.medecindefaut.getNom());
 			return PlanningService.medecindefaut;
+
 		}
 		return this.medecin;
 	}
