@@ -1,0 +1,112 @@
+package miage.gestioncabinet.coreM;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import miage.gestioncabinet.api.Consultation;
+import miage.gestioncabinet.api.GestionCabinetException;
+import miage.gestioncabinet.api.Medecin;
+import miage.gestioncabinet.api.Patient;
+import miage.gestioncabinet.api.PlanningRemoteService; 
+import miage.gestioncabinet.api.Utilisateur;
+
+public class PlanningService implements PlanningRemoteService {
+
+	Utilisateur utilisateur;
+	List<Medecin> listeMedecin;
+	List<Patient> listePatient;
+	Calendar dateDebut;
+	Calendar dateFin;
+	Medecin medecin;
+	List<Consultation> listeConsultations; 
+	Consultation consultationcourrante;
+	
+	@Override
+	public Utilisateur getUtilisateur() {
+		return this.utilisateur;
+	}
+
+	@Override
+	public List<Medecin> rechercherMedecins() throws GestionCabinetException {
+		return null;
+	}
+
+	@Override
+	public List<Patient> rechercherPatients(String nom, String prenom,
+			Calendar dateNaissance) throws GestionCabinetException {
+		List<Patient> listeretour = new ArrayList<Patient>();
+		for (Patient patient : this.listePatient) {
+			if (patient.getNom().equals(nom) && patient.getPrenom().equals(prenom) && patient.getDateNaissance().equals(dateNaissance)) {
+				listeretour.add(patient);
+			}
+		}
+		return listeretour;
+	}
+
+	@Override
+	public Calendar getDateDebut() {
+		return this.dateDebut;
+	}
+
+	@Override
+	public void setDateDebut(Calendar date) {
+		this.dateDebut = date;		
+	}
+
+	@Override
+	public Calendar getDateFin() {
+		return this.dateFin;
+	}
+
+	@Override
+	public void setDateFin(Calendar date) {
+		this.dateFin = date;		
+	}
+
+	@Override
+	public Medecin getMedecin() {
+		return this.medecin;
+	}
+
+	@Override
+	public void setMedecin(Medecin medecin) {
+		this.medecin = medecin;
+	}
+
+	@Override
+	public List<Consultation> listerRdv() {
+		return this.listeConsultations;
+	}
+
+	@Override
+	public Consultation getRdvCourant() {
+		return this.consultationcourrante;
+	}
+
+	@Override
+	public void setRdvCourant(Consultation rdv) {
+		this.consultationcourrante = rdv;
+		
+	}
+
+	@Override
+	public Consultation creerRdv(Calendar date) {
+		Consultation newconsultation = new ConsultationImpl(date);
+		this.consultationcourrante = newconsultation;
+		return newconsultation;
+	}
+
+	@Override
+	public Consultation enregistrerRdv() throws GestionCabinetException {
+		this.listeConsultations.add(this.consultationcourrante);
+		return this.consultationcourrante;
+	}
+
+	@Override
+	public void supprimerRdv() throws GestionCabinetException {
+		this.listeConsultations.remove(this.consultationcourrante);
+		return ;		
+	}
+
+}
