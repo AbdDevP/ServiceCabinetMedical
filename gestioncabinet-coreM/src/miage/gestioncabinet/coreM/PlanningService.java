@@ -23,9 +23,11 @@ public class PlanningService implements PlanningRemoteService {
 	private List<Patient> listePatient;
 	private Calendar dateDebut;
 	private Calendar dateFin;
+	public static Medecin medecindefaut;
 	private Medecin medecin;
 	private List<Consultation> listeConsultations; 
 	private Consultation consultationcourrante;
+	
 	
 	@Override
 	public Utilisateur getUtilisateur() {
@@ -71,6 +73,9 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public Medecin getMedecin() {
+		if (this.medecin == null) {
+			return PlanningService.medecindefaut;
+		}
 		return this.medecin;
 	}
 

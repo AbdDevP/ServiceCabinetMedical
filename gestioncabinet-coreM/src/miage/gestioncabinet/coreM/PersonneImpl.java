@@ -8,6 +8,11 @@ public class PersonneImpl implements Personne {
 	private String name;
 	private String prenom;
 	
+	public PersonneImpl(String nom, String prenom) {
+		this.name = nom;
+		this.prenom = prenom;
+	}
+
 	public String getNom(){
 		return this.name;
 	}
