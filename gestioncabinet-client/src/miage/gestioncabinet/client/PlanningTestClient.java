@@ -38,6 +38,7 @@ public class PlanningTestClient {
 		try{
 			ServiceLocator locator = ServiceLocator.INSTANCE;
 			this.ejb = (PlanningRemoteService) locator.getRemoteInterface(service);
+			System.out.println(this.ejb);
 		}
 		catch(ServiceLocatorException e){
 			System.out.println("Le service "+service+" est introuvable");

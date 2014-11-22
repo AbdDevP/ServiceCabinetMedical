@@ -11,7 +11,7 @@ import miage.gestioncabinet.api.Consultation;
 import miage.gestioncabinet.api.GestionCabinetException;
 import miage.gestioncabinet.api.Medecin;
 import miage.gestioncabinet.api.Patient;
-import miage.gestioncabinet.api.PlanningRemoteService; 
+import miage.gestioncabinet.api.PlanningRemoteService;
 import miage.gestioncabinet.api.Utilisateur;
 
 @Stateful
@@ -25,10 +25,9 @@ public class PlanningService implements PlanningRemoteService {
 	private Calendar dateFin;
 	public static Medecin medecindefaut;
 	private Medecin medecin;
-	private List<Consultation> listeConsultations; 
+	private List<Consultation> listeConsultations;
 	private Consultation consultationcourrante;
-	
-	
+
 	@Override
 	public Utilisateur getUtilisateur() {
 		return this.utilisateur;
@@ -44,7 +43,9 @@ public class PlanningService implements PlanningRemoteService {
 			Calendar dateNaissance) throws GestionCabinetException {
 		List<Patient> listeretour = new ArrayList<Patient>();
 		for (Patient patient : this.listePatient) {
-			if (patient.getNom().equals(nom) && patient.getPrenom().equals(prenom) && patient.getDateNaissance().equals(dateNaissance)) {
+			if (patient.getNom().equals(nom)
+					&& patient.getPrenom().equals(prenom)
+					&& patient.getDateNaissance().equals(dateNaissance)) {
 				listeretour.add(patient);
 			}
 		}
@@ -53,12 +54,16 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public Calendar getDateDebut() {
+		// Calendar date = new Calendar.getInstance();
+		String date = "2014-11-22";
+		// return (this.dateDebut != null) ? this.dateDebut : date;
+		// return date;
 		return this.dateDebut;
 	}
 
 	@Override
 	public void setDateDebut(Calendar date) {
-		this.dateDebut = date;		
+		this.dateDebut = date;
 	}
 
 	@Override
@@ -68,15 +73,13 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public void setDateFin(Calendar date) {
-		this.dateFin = date;		
+		this.dateFin = date;
 	}
 
 	@Override
 	public Medecin getMedecin() {
 		if (this.medecin == null) {
-			System.out.println(PlanningService.medecindefaut.getNom());
-			return PlanningService.medecindefaut;
-
+			return new MedecinImpl("Leroy", "Clara", "1", "008");
 		}
 		return this.medecin;
 	}
@@ -99,7 +102,7 @@ public class PlanningService implements PlanningRemoteService {
 	@Override
 	public void setRdvCourant(Consultation rdv) {
 		this.consultationcourrante = rdv;
-		
+
 	}
 
 	@Override
@@ -118,7 +121,7 @@ public class PlanningService implements PlanningRemoteService {
 	@Override
 	public void supprimerRdv() throws GestionCabinetException {
 		this.listeConsultations.remove(this.consultationcourrante);
-		return ;		
+		return;
 	}
 
 }
