@@ -5,11 +5,11 @@ import miage.gestioncabinet.api.Personne;
 public class PersonneImpl implements Personne {
 	
 	private static final long serialVersionUID = 1L;
-	String name;
-	String prenom;
+	private String name;
+	private String prenom;
 	
 	public String getNom(){
-		return name;
+		return this.name;
 	}
 	
 	public void setNom(String n){
@@ -17,7 +17,7 @@ public class PersonneImpl implements Personne {
 	}
 	
 	public String getPrenom(){
-		return prenom;
+		return this.prenom;
 	}
 	
 	public void setPrenom(String p){

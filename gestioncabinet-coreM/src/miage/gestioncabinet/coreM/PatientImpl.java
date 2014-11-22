@@ -8,12 +8,12 @@ public class PatientImpl extends PersonneImpl implements Patient {
 
 	private static final long serialVersionUID = 1L;
 	
-	Calendar date;
-	Integer age;
+	private Calendar date;
+	private Integer age;
 	
 	
 	public Calendar getDateNaissance(){
-		return date;
+		return this.date;
 	}
 	
 	public void setDateNaissance(Calendar c){
@@ -21,6 +21,6 @@ public class PatientImpl extends PersonneImpl implements Patient {
 	}
 	
 	public Integer getAge(){
-		return age;
+		return this.age;
 	}
 }

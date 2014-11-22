@@ -10,7 +10,7 @@ public class ProduitImpl implements Produit {
 	
 	
 	public String getCis(){
-		return cis;
+		return this.cis;
 	}
 	
 	public void setCis(String c){
@@ -18,7 +18,7 @@ public class ProduitImpl implements Produit {
 	}
 
 	public String getNom(){
-		return name;
+		return this.name;
 	}
 	
 	public void setNom(String n){

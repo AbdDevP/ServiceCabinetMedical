@@ -9,13 +9,13 @@ import miage.gestioncabinet.coreM.*;
 public class ConsultationImpl {
 
 		private static final long serialVersionUID = 1L;
-		Patient patient;
-		Medecin medecin;
-		Calendar debut;
-		Calendar fin;
-		String compteRendu;
-		List<Traitement> listeT;
-		List<Interaction> listeI;
+		private Patient patient;
+		private Medecin medecin;
+		private Calendar debut;
+		private Calendar fin;
+		private String compteRendu;
+		private List<Traitement> listeT;
+		private List<Interaction> listeI;
 
 		
 		public ConsultationImpl(Calendar debut) {
@@ -24,7 +24,7 @@ public class ConsultationImpl {
 		}
 
 		public Patient getPatient() {
-			return patient;
+			return this.patient;
 		}
 
 		public void setPatient(Patient p) {
@@ -32,7 +32,7 @@ public class ConsultationImpl {
 		}
 
 		public Medecin getMedecin(){
-			return medecin;
+			return this.medecin;
 		}
 
 		public void setMedecin (Medecin m){
@@ -40,7 +40,7 @@ public class ConsultationImpl {
 		}
 		
 		public Calendar getDebut(){
-			return debut;
+			return this.debut;
 		}
 		
 		public void setDebut (Calendar d){
@@ -48,7 +48,7 @@ public class ConsultationImpl {
 		}
 		
 		public Calendar getFin(){
-			return fin;
+			return this.fin;
 		}
 		
 		public void setFin(Calendar f){
@@ -56,7 +56,7 @@ public class ConsultationImpl {
 		}
 		
 		public String getCompteRendu(){
-			return compteRendu;
+			return this.compteRendu;
 		}
 		
 		public void setCompteRendu(String cr){
@@ -64,7 +64,7 @@ public class ConsultationImpl {
 		}
 		
 		public List<Traitement> getPrescription(){
-			return listeT;
+			return this.listeT;
 		}
 		
 		public Boolean ajouterTraitement(Produit p){
@@ -84,7 +84,7 @@ public class ConsultationImpl {
 		}
 		
 		public List<Interaction> getListeI() {
-			return listeI;
+			return this.listeI;
 		}
 
 

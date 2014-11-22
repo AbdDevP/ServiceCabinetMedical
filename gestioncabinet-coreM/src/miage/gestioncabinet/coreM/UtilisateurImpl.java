@@ -8,7 +8,7 @@ public class UtilisateurImpl extends PersonneImpl implements Utilisateur {
 	private String compte;
 	
 	public String getCompte(){
-		return compte;
+		return this.compte;
 	}
 
 }

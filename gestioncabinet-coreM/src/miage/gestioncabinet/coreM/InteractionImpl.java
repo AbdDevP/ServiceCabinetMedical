@@ -6,15 +6,15 @@ import miage.gestioncabinet.api.Produit;
 public class InteractionImpl implements Interaction {
 
 	private static final long serialVersionUID = 1L;
-	Produit prod1;
-	Produit prod2;
-	String sev;
-	String risq;
-	String prec;
+	private Produit prod1;
+	private Produit prod2;
+	private String sev;
+	private String risq;
+	private String prec;
 	
 	
 	public Produit getProduitA() {
-		return prod1;
+		return this.prod1;
 	}
 
 
@@ -24,7 +24,7 @@ public class InteractionImpl implements Interaction {
 
 
 	public Produit getProduitB() {
-		return prod2;
+		return this.prod2;
 	}
 
 
@@ -34,7 +34,7 @@ public class InteractionImpl implements Interaction {
 
 
 	public String getSeverite() {
-		return sev;
+		return this.sev;
 	}
 
 
@@ -44,7 +44,7 @@ public class InteractionImpl implements Interaction {
 
 
 	public String getRisques() {
-		return risq;
+		return this.risq;
 	}
 
 
@@ -54,7 +54,7 @@ public class InteractionImpl implements Interaction {
 
 
 	public String getPrecautions() {
-		return prec;
+		return this.prec;
 	}
 
 

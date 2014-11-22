@@ -18,14 +18,14 @@ import miage.gestioncabinet.api.Utilisateur;
 @Remote(PlanningRemoteService.class)
 public class PlanningService implements PlanningRemoteService {
 
-	Utilisateur utilisateur;
-	List<Medecin> listeMedecin;
-	List<Patient> listePatient;
-	Calendar dateDebut;
-	Calendar dateFin;
-	Medecin medecin;
-	List<Consultation> listeConsultations; 
-	Consultation consultationcourrante;
+	private Utilisateur utilisateur;
+	private List<Medecin> listeMedecin;
+	private List<Patient> listePatient;
+	private Calendar dateDebut;
+	private Calendar dateFin;
+	private Medecin medecin;
+	private List<Consultation> listeConsultations; 
+	private Consultation consultationcourrante;
 	
 	@Override
 	public Utilisateur getUtilisateur() {

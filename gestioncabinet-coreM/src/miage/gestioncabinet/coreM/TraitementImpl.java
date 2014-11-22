@@ -11,7 +11,7 @@ public class TraitementImpl  implements Traitement {
 	
 
 	public Produit getProduit(){
-		return prod;
+		return this.prod;
 	}
 	
 	public void setProduit(Produit p){
@@ -19,7 +19,7 @@ public class TraitementImpl  implements Traitement {
 	}
 	
 	public String getPosologie(){
-		return poso;
+		return this.poso;
 	}
 	
 	public void setPosologie(String po){
