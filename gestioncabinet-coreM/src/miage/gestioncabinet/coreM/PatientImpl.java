@@ -6,9 +6,6 @@ import miage.gestioncabinet.api.Patient;
 
 public class PatientImpl extends PersonneImpl implements Patient {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	Calendar date;
