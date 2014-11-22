@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateful;
+
 import miage.gestioncabinet.api.Consultation;
 import miage.gestioncabinet.api.GestionCabinetException;
 import miage.gestioncabinet.api.Medecin;
@@ -11,6 +14,8 @@ import miage.gestioncabinet.api.Patient;
 import miage.gestioncabinet.api.PlanningRemoteService; 
 import miage.gestioncabinet.api.Utilisateur;
 
+@Stateful
+@Remote(PlanningRemoteService.class)
 public class PlanningService implements PlanningRemoteService {
 
 	Utilisateur utilisateur;
@@ -92,7 +97,7 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public Consultation creerRdv(Calendar date) {
-		Consultation newconsultation = new ConsultationImpl(date);
+		Consultation newconsultation = (Consultation) new ConsultationImpl(date);
 		this.consultationcourrante = newconsultation;
 		return newconsultation;
 	}

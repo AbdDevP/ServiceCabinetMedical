@@ -34,7 +34,7 @@ public class PlanningTestClient {
 	 * @see java.lang.Object#Object()
 	 */
 	public PlanningTestClient() {
-		String service = "ejb:gestion-cabinet-P2/gestioncabinet-coreM//PlanningService!miage.gestioncabinet.api.PlanningRemoteService?stateful";
+		String service = "ejb:gestioncabinet-ear/gestioncabinet-coreM//PlanningService!miage.gestioncabinet.api.PlanningRemoteService?stateful";
 		try{
 			ServiceLocator locator = ServiceLocator.INSTANCE;
 			this.ejb = (PlanningRemoteService) locator.getRemoteInterface(service);
