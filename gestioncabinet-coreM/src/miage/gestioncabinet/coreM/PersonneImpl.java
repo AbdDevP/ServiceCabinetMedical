@@ -8,9 +8,7 @@ public class PersonneImpl implements Personne {
 	private String name;
 	private String prenom;
 	
-	public PersonneImpl(String nom, String prenom) {
-		this.name = nom;
-		this.prenom = prenom;
+	public PersonneImpl() {
 	}
 
 	public String getNom(){
@@ -29,4 +27,10 @@ public class PersonneImpl implements Personne {
 		this.prenom = p;
 	}
 
+	@Override
+	public String toString() {
+		return "PersonneImpl [name=" + name + ", prenom=" + prenom + "]";
+	}
+	
+	
 }

@@ -4,93 +4,118 @@ import java.util.Calendar;
 import java.util.List;
 
 import miage.gestioncabinet.api.*;
-import miage.gestioncabinet.coreM.*;
 
-public class ConsultationImpl {
+public class ConsultationImpl implements Consultation {
 
-		private static final long serialVersionUID = 1L;
-		private Patient patient;
-		private Medecin medecin;
-		private Calendar debut;
-		private Calendar fin;
-		private String compteRendu;
-		private List<Traitement> listeT;
-		private List<Interaction> listeI;
+	private static final long serialVersionUID = 1L;
+	private Patient patient;
+	private Medecin medecin;
+	private Calendar debut;
+	private Calendar fin;
+	private String compteRendu;
+	private List<Traitement> listeT;
+	private List<Interaction> listeI;
 
-		
-		public ConsultationImpl(Calendar debut) {
-			super();
-			this.debut = debut;
-		}
+	public ConsultationImpl() {
+	}
 
-		public Patient getPatient() {
-			return this.patient;
-		}
+	@Override
+	public Patient getPatient() {
+		return this.patient;
+	}
 
-		public void setPatient(Patient p) {
-			this.patient = p;
-		}
+	@Override
+	public void setPatient(Patient p) {
+		this.patient = p;
+	}
 
-		public Medecin getMedecin(){
-			return this.medecin;
-		}
+	@Override
+	public Medecin getMedecin() {
+		return this.medecin;
+	}
 
-		public void setMedecin (Medecin m){
-			this.medecin= m;
-		}
-		
-		public Calendar getDebut(){
-			return this.debut;
-		}
-		
-		public void setDebut (Calendar d){
-			this.debut = d;
-		}
-		
-		public Calendar getFin(){
-			return this.fin;
-		}
-		
-		public void setFin(Calendar f){
-			this.fin=f;
-		}
-		
-		public String getCompteRendu(){
-			return this.compteRendu;
-		}
-		
-		public void setCompteRendu(String cr){
-			this.compteRendu = cr;
-		}
-		
-		public List<Traitement> getPrescription(){
-			return this.listeT;
-		}
-		
-		public Boolean ajouterTraitement(Produit p){
-			if (this.listeT.contains(p))
-			{
+	@Override
+	public void setMedecin(Medecin m) {
+		this.medecin = m;
+	}
+
+	@Override
+	public Calendar getDebut() {
+		return this.debut;
+	}
+
+	@Override
+	public void setDebut(Calendar d) {
+		this.debut = d;
+	}
+
+	@Override
+	public Calendar getFin() {
+		return this.fin;
+	}
+
+	@Override
+	public void setFin(Calendar f) {
+		this.fin = f;
+	}
+
+	@Override
+	public String getCompteRendu() {
+		return this.compteRendu;
+	}
+
+	@Override
+	public void setCompteRendu(String cr) {
+		this.compteRendu = cr;
+	}
+
+	@Override
+	public List<Traitement> getPrescription() {
+		return this.listeT;
+	}
+
+	@Override
+	public Boolean ajouterTraitement(Produit p) {
+
+		for (Traitement traitement : listeT) {
+			if (traitement.getProduit().getCis().equals(p.getCis()))
 				return false;
-			}
-			else{
-				TraitementImpl traitement = new TraitementImpl();
-				traitement.setProduit(p);
-				return this.listeT.add(traitement);
-			}
-		}
-		
-		public Boolean supprimerTraitement (Traitement medicament){
-			return this.listeT.remove(medicament);
-		}
-		
-		public List<Interaction> getListeI() {
-			return this.listeI;
 		}
 
+		TraitementImpl traitement = new TraitementImpl();
+		traitement.setProduit(p);
+		return this.listeT.add(traitement);
 
-		public void setListeI(List<Interaction> interactions) {
-			this.listeI = interactions;
+	}
+
+	@Override
+	public Boolean supprimerTraitement(Traitement medicament) {
+		return this.listeT.remove(medicament);
+	}
+
+	@Override
+	public List<Interaction> getInteractions() {
+		return listeI;
+	}
+
+	@Override
+	public void setInteractions(List<Interaction> interactions) {
+		this.listeI = interactions;
+	}
+
+	@Override
+	public int compareTo(Consultation consultation) {
+		if (this.medecin.getRPPS().equals(consultation.getMedecin().getRPPS())
+				&& this.patient.getNom().equals(
+						consultation.getPatient().getNom())
+				&& this.patient.getPrenom().equals(
+						consultation.getPatient().getPrenom())
+				&& this.patient.getDateNaissance().equals(
+						consultation.getPatient().getDateNaissance())
+				&& this.debut.equals(consultation.getDebut())) {
+			return 1;
 		}
-		
-		
+		return 0;
+	}
+
 }

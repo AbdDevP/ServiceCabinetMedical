@@ -9,7 +9,10 @@ public class TraitementImpl  implements Traitement {
 	private Produit prod;
 	private String poso;
 	
-
+	public TraitementImpl(){
+		
+	}
+	
 	public Produit getProduit(){
 		return this.prod;
 	}

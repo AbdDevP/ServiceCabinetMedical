@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 
@@ -23,19 +24,55 @@ public class PlanningService implements PlanningRemoteService {
 	private List<Patient> listePatient;
 	private Calendar dateDebut;
 	private Calendar dateFin;
-	public static Medecin medecindefaut;
 	private Medecin medecin;
-	private List<Consultation> listeConsultations;
-	private Consultation consultationcourrante;
+	@EJB
+	private ConsultationService serviceConsultation;
+
+	public PlanningService() {
+
+		this.serviceConsultation = new ConsultationService();// initialisation
+																// du service
+																// consultation
+		try {
+			this.listeMedecin = rechercherMedecins();// récupère les médecins du
+														// service
+		} catch (GestionCabinetException e) {
+			e.printStackTrace();
+		}
+		this.setMedecin(this.listeMedecin.get(0)); // medecin par défaut
+		Calendar calDeb = Calendar.getInstance();
+		calDeb.set(Calendar.HOUR, 9);
+		this.setDateDebut(calDeb);
+		Calendar calFin = Calendar.getInstance();
+		calFin.set(Calendar.HOUR, 18);
+		this.setDateFin(calFin);
+	}
 
 	@Override
 	public Utilisateur getUtilisateur() {
+		UtilisateurImpl u = new UtilisateurImpl();
+		u.setNom("secrétaire");
+		u.setPrenom("1");
+		this.utilisateur = u;
 		return this.utilisateur;
 	}
 
 	@Override
 	public List<Medecin> rechercherMedecins() throws GestionCabinetException {
-		return null;
+		if (listeMedecin == null) {
+			listeMedecin = new ArrayList<Medecin>();
+			MedecinImpl m1 = new MedecinImpl();
+			m1.setNom("House");
+			m1.setPrenom("Gregory");
+			m1.setRPPS("rpps1");
+			MedecinImpl m2 = new MedecinImpl();
+			m2.setNom("Wilson");
+			m2.setPrenom("James");
+			m2.setRPPS("rpps1");
+			listeMedecin.add(m1);
+			listeMedecin.add(m2);
+		}
+		return listeMedecin;
 	}
 
 	@Override
@@ -54,10 +91,6 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public Calendar getDateDebut() {
-		// Calendar date = new Calendar.getInstance();
-		String date = "2014-11-22";
-		// return (this.dateDebut != null) ? this.dateDebut : date;
-		// return date;
 		return this.dateDebut;
 	}
 
@@ -78,9 +111,6 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public Medecin getMedecin() {
-		if (this.medecin == null) {
-			return new MedecinImpl("Leroy", "Clara", "1", "008");
-		}
 		return this.medecin;
 	}
 
@@ -91,37 +121,42 @@ public class PlanningService implements PlanningRemoteService {
 
 	@Override
 	public List<Consultation> listerRdv() {
-		return this.listeConsultations;
+		List<Consultation> consultations = serviceConsultation.consultationduservice;
+		List<Consultation> consultationsDuMedecin = new ArrayList<Consultation>();
+		for (Consultation consultation : consultations) {
+			if (consultation.getMedecin().equals(medecin)) {
+				consultationsDuMedecin.add(consultation);
+			}
+		}
+		return consultationsDuMedecin;
 	}
 
 	@Override
 	public Consultation getRdvCourant() {
-		return this.consultationcourrante;
+		return serviceConsultation.getConsultation();
 	}
 
 	@Override
 	public void setRdvCourant(Consultation rdv) {
-		this.consultationcourrante = rdv;
-
+		serviceConsultation.setConsultation(rdv);
 	}
 
 	@Override
 	public Consultation creerRdv(Calendar date) {
-		Consultation newconsultation = (Consultation) new ConsultationImpl(date);
-		this.consultationcourrante = newconsultation;
-		return newconsultation;
+		Consultation c = serviceConsultation.creerRdv(date);
+		c.setMedecin(this.medecin);
+		c.setPatient(new PatientImpl());
+		return c;
 	}
 
 	@Override
 	public Consultation enregistrerRdv() throws GestionCabinetException {
-		this.listeConsultations.add(this.consultationcourrante);
-		return this.consultationcourrante;
+		return serviceConsultation.enregistrer();
 	}
 
 	@Override
 	public void supprimerRdv() throws GestionCabinetException {
-		this.listeConsultations.remove(this.consultationcourrante);
-		return;
+		serviceConsultation.supprimer();
 	}
 
 }

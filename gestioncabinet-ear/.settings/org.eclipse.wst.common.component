@@ -5,14 +5,11 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="gestioncabinet-vidal.jar" deploy-path="/lib" handle="module:/resource/gestioncabinet-vidal/gestioncabinet-vidal">
+        <dependent-module archiveName="gestioncabinet-api.jar" deploy-path="/lib" handle="module:/resource/gestioncabinet-api/gestioncabinet-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="gestioncabinet-coreM.jar" deploy-path="/" handle="module:/resource/gestioncabinet-coreM/gestioncabinet-coreM">
             <dependent-object/>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="gestioncabinet-api.jar" deploy-path="/lib" handle="module:/resource/gestioncabinet-api/gestioncabinet-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
