@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 import miage.gestioncabinet.api.Consultation;
 import miage.gestioncabinet.api.GestionCabinetException;
@@ -15,7 +16,7 @@ import miage.gestioncabinet.api.Patient;
 import miage.gestioncabinet.api.PlanningRemoteService;
 import miage.gestioncabinet.api.Utilisateur;
 
-@Stateful
+@Stateless
 @Remote(PlanningRemoteService.class)
 public class PlanningService implements PlanningRemoteService {
 
@@ -68,7 +69,7 @@ public class PlanningService implements PlanningRemoteService {
 			MedecinImpl m2 = new MedecinImpl();
 			m2.setNom("Wilson");
 			m2.setPrenom("James");
-			m2.setRPPS("rpps1");
+			m2.setRPPS("rpps2");
 			listeMedecin.add(m1);
 			listeMedecin.add(m2);
 		}
@@ -124,7 +125,7 @@ public class PlanningService implements PlanningRemoteService {
 		List<Consultation> consultations = serviceConsultation.consultationduservice;
 		List<Consultation> consultationsDuMedecin = new ArrayList<Consultation>();
 		for (Consultation consultation : consultations) {
-			if (consultation.getMedecin().equals(medecin)) {
+			if (consultation.getMedecin().getRPPS().equals(medecin.getRPPS())) {
 				consultationsDuMedecin.add(consultation);
 			}
 		}

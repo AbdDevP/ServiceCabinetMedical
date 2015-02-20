@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Remote;
 import javax.ejb.Stateful;
 
 import miage.gestioncabinet.api.Consultation;
 import miage.gestioncabinet.api.ConsultationRemoteService;
 import miage.gestioncabinet.api.GestionCabinetException;
-import miage.gestioncabinet.api.Interaction;
 import miage.gestioncabinet.api.Produit;
 import miage.gestioncabinet.api.Traitement;
 
 @Stateful
+@LocalBean
 public class ConsultationService implements ConsultationRemoteService {
 
 	private Consultation consultation;// consultation courante
-	public List<Consultation> consultationduservice = new ArrayList<Consultation>();
+	public static List<Consultation> consultationduservice = new ArrayList<Consultation>();
 
 	@Override
 	public Consultation getConsultation() {
@@ -68,7 +69,13 @@ public class ConsultationService implements ConsultationRemoteService {
 
 	@Override
 	public void supprimer() throws GestionCabinetException {
-		consultationduservice.remove(this.consultation);
+
+		for (int i = 0; i < consultationduservice.size(); i++) {
+			Consultation cons = consultationduservice.get(i);
+			if (cons.compareTo(this.consultation) == 1) {
+				consultationduservice.remove(i);
+			}
+		}
 	}
 
 }

@@ -24,7 +24,20 @@ public class MedecinImpl extends UtilisateurImpl implements Medecin {
 		this.rpps = rpps;	
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((rpps == null) ? 0 : rpps.hashCode());
+		return result;
+	}
 
+	public boolean equals(Medecin obj) {
+		return this.rpps.equals(obj.getRPPS());
+	}
+
+	
+	
 	
 	
 }

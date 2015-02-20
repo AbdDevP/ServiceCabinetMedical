@@ -15,4 +15,5 @@ public interface Medecin extends Utilisateur{
 	 * @return son numéro RPPS
 	 */
 	public String getRPPS();
+	
 }
