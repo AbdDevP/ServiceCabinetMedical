@@ -5,6 +5,6 @@
     <ejb>gestioncabinet-util.jar</ejb>
   </module>
   <module>
-    <ejb>gestioncabinet-coreM.jar</ejb>
+    <ejb>gestioncabinet-coreDB.jar</ejb>
   </module>
 </application>

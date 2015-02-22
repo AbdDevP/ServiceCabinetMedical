@@ -6,6 +6,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/JBoss/bin/client/jboss-client.jar"/>
+	<classpathentry kind="lib" path="/Users/bouabd/Miage/Projet JEE/Serveur/jboss-as-7.1.1.Final/bin/client/jboss-client.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
