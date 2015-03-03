@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>gestioncabinet-ear</name>
+	<name>gestioncabinet-earDB</name>
 	<comment></comment>
 	<projects>
 		<project>gestioncabinet-api</project>

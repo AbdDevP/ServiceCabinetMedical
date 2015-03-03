@@ -30,8 +30,8 @@ public class ConsultationTestClient {
 	 * @see java.lang.Object#Object()
 	 */
 	public ConsultationTestClient() {
-		String serviceConsultation = "ejb:gestioncabinet-ear/gestioncabinet-coreDB//ConsultationService!miage.gestioncabinet.api.ConsultationRemoteService?stateful";
-		String servicePlanning = "ejb:gestioncabinet-ear/gestioncabinet-coreDB//PlanningService!miage.gestioncabinet.api.PlanningRemoteService?stateful";
+		String serviceConsultation = "ejb:gestioncabinet-earDB/gestioncabinet-coreDB//ConsultationService!miage.gestioncabinet.api.ConsultationRemoteService?stateful";
+		String servicePlanning = "ejb:gestioncabinet-earDB/gestioncabinet-coreDB//PlanningService!miage.gestioncabinet.api.PlanningRemoteService?stateful";
 		try {
 			ServiceLocator locator = ServiceLocator.INSTANCE;
 			this.ejbPlanning = (PlanningRemoteService) locator

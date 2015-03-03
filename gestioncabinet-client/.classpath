@@ -7,8 +7,9 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/gestioncabinet-coreDB"/>
 	<classpathentry kind="lib" path="/Users/bouabd/Miage/Projet JEE/Serveur/jboss-as-7.1.1.Final/modules/org/hibernate/main/hibernate-core-4.0.1.Final.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/com.novarem.jndi"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gestioncabinet-coreDB"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gestioncabinet-coreM"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

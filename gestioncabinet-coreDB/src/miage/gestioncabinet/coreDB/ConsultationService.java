@@ -104,7 +104,7 @@ public class ConsultationService implements ConsultationRemoteService {
 		// this.consultation.setPatient(pDb);
 
 		ConsultationDB consultationDb = (ConsultationDB) this.consultation;
-		if (consultationDb.getId() > 0) {
+		if (consultationDb.getId() != null) {
 			/*
 			 * consultationDb = em.find(ConsultationDB.class,
 			 * consultationDb.getId());// on remet l'objet en mémoire pour //

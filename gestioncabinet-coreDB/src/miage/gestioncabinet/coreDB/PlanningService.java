@@ -188,7 +188,9 @@ public class PlanningService implements PlanningRemoteService {
 											// patient en cas de homonyme
 		} else {
 			em.persist(p);
+			c.setPatient(p);
 		}
+		this.serviceConsultation.setConsultation(c);
 		return serviceConsultation.enregistrer();
 	}
 
