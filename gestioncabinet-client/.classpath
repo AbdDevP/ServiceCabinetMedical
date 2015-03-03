@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/com.novarem.jndi"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gestioncabinet-api"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 7 [1.7.0_75]">
 		<attributes>
@@ -9,5 +8,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/gestioncabinet-coreDB"/>
+	<classpathentry kind="lib" path="/Users/bouabd/Miage/Projet JEE/Serveur/jboss-as-7.1.1.Final/modules/org/hibernate/main/hibernate-core-4.0.1.Final.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/com.novarem.jndi"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
